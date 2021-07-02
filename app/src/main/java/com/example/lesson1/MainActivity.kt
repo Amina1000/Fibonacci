@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
             val manager: FragmentManager = supportFragmentManager
             val transaction: FragmentTransaction = manager.beginTransaction()
             eNum.let {
-                fib_num =it.toString().toInt()
+                fib_num =it?.text.toString().toInt()
             }
-            transaction.add(R.id.main_container, FibonacciFragment.newInstance(fib_num))
+            transaction.replace(R.id.main_container, FibonacciFragment.newInstance(fib_num))
             transaction.commit()
         }
     }

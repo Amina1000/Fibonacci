@@ -1,6 +1,5 @@
 package com.example.lesson1
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ private const val FIB_NUM = "fib_num"
 class FibonacciFragment : Fragment() {
 
     private var fibNum: Int = 0
-    private val recyclerView: RecyclerView? = null
+
     private var adapter: FibAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,18 +27,20 @@ class FibonacciFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fibonachi, container, false)
-        initRecyclerView()
+        val view:View = inflater.inflate(R.layout.fragment_fibonachi, container, false)
+        initRecyclerView(view)
+        return view
     }
 
-    private fun initRecyclerView() {
-        recyclerView!!.setHasFixedSize(true)
+    private fun initRecyclerView(view:View) {
+        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view_fib)
+        recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
         adapter = FibAdapter(fibNum)
-        recyclerView.setAdapter(adapter)
+        recyclerView.adapter = adapter
     }
 
     companion object {
