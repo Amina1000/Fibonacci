@@ -12,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
  * @author Amina
  * 11.06.2021
  */
-class FibAdapter(private var fibNum:Int) :
-    RecyclerView.Adapter<FibAdapter.BaseViewHolder>() {
+class FibAdapter(fibNum: Int) : RecyclerView.Adapter<FibAdapter.BaseViewHolder>() {
 
     private var fibList: MutableList<Int> = mutableListOf()
+
+    init {
+        fibList = addNamToListFib(fibNum)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): BaseViewHolder {
         // Создаём новый элемент пользовательского интерфейса
@@ -23,7 +27,6 @@ class FibAdapter(private var fibNum:Int) :
         val vNote: View = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.item, viewGroup, false)
         // Здесь можно установить всякие параметры
-        fibList = addNamToListFib(fibNum)
         return BaseViewHolder(vNote)
     }
 
@@ -31,7 +34,6 @@ class FibAdapter(private var fibNum:Int) :
         // Получить элемент из источника данных (БД, интернет...)
         // Вынести на экран, используя ViewHolder
         viewHolder.setData(fibList, i)
-        notifyDataSetChanged()
     }
 
     // Вернуть размер данных, вызывается менеджером
@@ -39,13 +41,11 @@ class FibAdapter(private var fibNum:Int) :
         return fibList.size
     }
 
-
     class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTV: TextView = itemView.findViewById(R.id.item_number)
-        fun setData(fibList: MutableList<Int>,position: Int) {
-            val fibRes: Int = getNamFromListFib(fibList, position)
-            titleTV.setText(fibRes)
+        fun setData(fibList: MutableList<Int>, position: Int) {
+            val fibRes = fibList[position]
+            titleTV.text = fibRes.toString()
         }
-
     }
 }
