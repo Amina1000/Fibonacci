@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 class MainActivity : AppCompatActivity() {
     private var button: Button? = null
     private var fibNum: EditText?= null
-    var fib_num =0
+    private var fibNumInt =0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
             val manager: FragmentManager = supportFragmentManager
             val transaction: FragmentTransaction = manager.beginTransaction()
             fibNum?.let {
-                fib_num =it.text.toString().toInt()
+                fibNumInt =it.text.toString().toInt()
             }
-            transaction.replace(R.id.main_container, FibonacciFragment.newInstance(fib_num))
+            transaction.replace(R.id.main_container, FibonacciFragment.newInstance(fibNumInt))
             transaction.commit()
         }
     }
