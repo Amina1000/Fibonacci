@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
  * @author Amina
  * 11.06.2021
  */
-class FibAdapter(fibNum:Int) :
-    RecyclerView.Adapter<FibAdapter.BaseViewHolder>() {
+class FibAdapter(fibNum: Int) : RecyclerView.Adapter<FibAdapter.BaseViewHolder>() {
 
-    private var fibList: MutableList<Int> =mutableListOf()
+    private var fibList: MutableList<Int> = mutableListOf()
 
     init {
         fibList = addNamToListFib(fibNum)
@@ -44,9 +43,9 @@ class FibAdapter(fibNum:Int) :
 
     class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTV: TextView = itemView.findViewById(R.id.item_number)
-        fun setData(fibList: MutableList<Int>,position: Int) {
-            val fibRes: Int = fibList.get(position)
-            titleTV.text=fibRes.toString()
+        fun setData(fibList: MutableList<Int>, position: Int) {
+            val fibRes = fibList[position]
+            titleTV.text = fibRes.toString()
         }
     }
 }

@@ -13,8 +13,7 @@ private const val FIB_NUM = "fib_num"
 
 class FibonacciFragment : Fragment() {
 
-    private var fibNum: Int = 0
-
+    private var fibNum = 0
     private var adapter: FibAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +28,13 @@ class FibonacciFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view:View = inflater.inflate(R.layout.fragment_fibonachi, container, false)
+        val view = inflater.inflate(R.layout.fragment_fibonachi, container, false)
         initRecyclerView(view)
         return view
     }
 
     private fun initRecyclerView(view:View) {
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view_fib)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_fib)
         recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
