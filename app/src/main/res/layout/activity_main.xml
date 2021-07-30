@@ -23,21 +23,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnLesson6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/load_service_data"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp" />
-
         <Button
             android:id="@+id/btnLesson1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:text="@string/open_screen"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnBinding"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/load_service_data"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnForeground"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/open_screen" />
+            android:text="@string/calc_service_data"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnForegroundStop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/calc_service_stop"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout

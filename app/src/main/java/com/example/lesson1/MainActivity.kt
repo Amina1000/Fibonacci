@@ -10,10 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.lesson1.service.BoundService
-import java.lang.Exception
+import com.example.lesson1.service.ForegroundService
+
 
 class MainActivity : AppCompatActivity() {
     private var button: Button? = null
@@ -65,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             }
             addFragment(fibNumInt)
         }
-
-        buttonService = findViewById(R.id.btnLesson6)
+        // кнопка вызова Binding сервиса
+        buttonService = findViewById(R.id.btnBinding)
         buttonService.setOnClickListener {
             if (mBound) {
                 // Вызываем мотода сервиса BoundService.
@@ -75,6 +77,16 @@ class MainActivity : AppCompatActivity() {
                 val num: Int = mService.randomNumber
                 addFragment(num)
             }
+        }
+        // кнопка вызова фонового сервиса
+        val buttonForegraund = findViewById<Button>(R.id.btnForeground)
+        val serviceIntent = Intent(this@MainActivity, ForegroundService::class.java)
+        buttonForegraund.setOnClickListener {
+            ContextCompat.startForegroundService(this@MainActivity, serviceIntent)
+        }
+        val buttonForegraundStop = findViewById<Button>(R.id.btnForegroundStop)
+        buttonForegraundStop.setOnClickListener {
+            stopService(serviceIntent)
         }
     }
 

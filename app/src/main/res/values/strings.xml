@@ -5,5 +5,7 @@
     <string name="tv_text">Расчитать последовательность ФИБОНАЧЧИ</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="number">Число последовательности</string>
-    <string name="load_service_data">Загрузить данные сервиса</string>
+    <string name="load_service_data">Binding server</string>
+    <string name="calc_service_data">Foreground start</string>
+    <string name="calc_service_stop">Foreground stop</string>
 </resources>
